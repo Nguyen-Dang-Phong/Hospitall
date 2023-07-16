@@ -10,8 +10,30 @@ import { FormattedMessage } from 'react-intl';
 class Login extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            Username: 'phongcoc',
+            Password: '11111',
+            isCheckPassword: false
+        }
     }
-
+    handleOnChangeInputUseername = (event) => {
+        this.setState({
+            Username: event.target.value
+        })
+    }
+    handleOnChangeInputPassword = (event) => {
+        this.setState({
+            Password: event.target.value
+        })
+    }
+    handleClickButton = () => {
+        console.log('Username: ', this.state.Username, ' Password: ', this.state.Password)
+    }
+    handleClickEye = () => {
+        this.setState({
+            isCheckPassword: !this.state.isCheckPassword
+        })
+    }
     render() {
 
         return (
@@ -21,14 +43,18 @@ class Login extends Component {
                         <div className='col-12 text-center text-login'>Login</div>
                         <div className='col-12 form-group login-input'>
                             <label>Username</label>
-                            <input type='text' className='form-control' placeholder='Enter your username'></input>
+                            <input type='text' className='form-control' placeholder='Enter your username' value={this.state.Username} onChange={(even) => this.handleOnChangeInputUseername(even)}></input>
                         </div>
                         <div className='col-12 form-group login-input'>
                             <label>Password</label>
-                            <input type='text' className='form-control' placeholder='Enter your password'></input>
+                            <div className='custom-input-password'>
+                                <input type={this.state.isCheckPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your password' value={this.state.Password} onChange={(even) => this.handleOnChangeInputPassword(even)}></input>
+                                <i class={this.state.isCheckPassword ? "fas fa-eye" : 'fas fa-eye-slash'} onClick={() => this.handleClickEye()}></i>
+
+                            </div>
                         </div>
                         <div className='col-12 '>
-                            <button className='col-12 login-botton'>Login</button>
+                            <button className='col-12 login-botton' onClick={() => this.handleClickButton()}>Login</button>
                         </div>
                         <div className='col-12 forgot-password'>
                             <span>Forgot your password? </span>
