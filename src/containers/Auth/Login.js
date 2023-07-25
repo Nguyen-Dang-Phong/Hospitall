@@ -77,7 +77,7 @@ class Login extends Component {
                             <label>Password</label>
                             <div className='custom-input-password'>
                                 <input type={this.state.isCheckPassword ? 'text' : 'password'} className='form-control' placeholder='Enter your password' value={this.state.Password} onChange={(even) => this.handleOnChangeInputPassword(even)}></input>
-                                <i class={this.state.isCheckPassword ? "fas fa-eye" : 'fas fa-eye-slash'} onClick={() => this.handleClickEye()}></i>
+                                <i className={this.state.isCheckPassword ? "fas fa-eye" : 'fas fa-eye-slash'} onClick={() => this.handleClickEye()}></i>
 
                             </div>
                         </div>
